@@ -1,21 +1,24 @@
 import { useState } from "react"
+import { Routes, Route, Link } from 'react-router-dom'
+import Signup from './Signup'
+import Login from './Login'
 import '../css/Home.scss'
 
 function Home() {
 
   return (
     <div className="Home">
-      <header className="top-bar">
-        <div className="left-head">
-          <h2>VALKALA ORIGINS</h2>
+      <main className="landing">
+        <div className="emblem">
+          TBC
         </div>
-        <div className="right-head">
-          <h4>Leaderboard</h4>
-          <h4>Sign up</h4>
-          <h4>Log in</h4>
+        <div className="main-heading">
+          <h1>VALKALA ORIGINS</h1>
         </div>
-      </header>
-
+        <div className="play">
+          <a href="">PLAY NOW</a>
+        </div>
+      </main>
     </div>
   )
 }

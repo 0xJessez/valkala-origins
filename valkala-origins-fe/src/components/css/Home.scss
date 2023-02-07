@@ -20,8 +20,37 @@ body {
   }
 
   .right-head {
-    display: flex;
-    gap: 1rem;
-    margin-right: 1rem;
+    ul {
+      display: flex;
+      list-style: none;
+      gap: 1rem;
+      // text-decoration: none;
+      // color: white;
+
+      li {
+
+        Link {}
+      }
+    }
+  }
+}
+
+.landing {
+  height: 600px;
+
+  .emblem {
+    margin-top: 3rem;
+  }
+
+  .main-heading {
+    margin-bottom: 30px;
+  }
+
+  .play a {
+    background-color: #123F17;
+    text-decoration: none;
+    color: #44FF57;
+    font-size: 3rem;
+    padding: 0.5rem;
   }
 }
