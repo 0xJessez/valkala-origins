@@ -5,9 +5,17 @@ function Signup() {
 
   return (
     <div className="Signup">
-      <main className="">
+      <form action="">
+        <div className="signup-center">
+          <label htmlFor="">Username</label>
+          <input type="text" />
+          <br />
+          <label htmlFor="">Password</label>
+          <input type="password" />
+        </div>
+        <button>Sign up</button>
+      </form>
 
-      </main>
     </div>
   )
 }
