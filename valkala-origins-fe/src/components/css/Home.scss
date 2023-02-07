@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  border: 1px solid red;
+}
+
+body {
+  margin: 0 1rem;
+  max-width: 1200px;
+  font-family: 'Judson', serif;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+
+  .left-head {
+    margin-left: 1rem;
+  }
+
+  .right-head {
+    display: flex;
+    gap: 1rem;
+    margin-right: 1rem;
+  }
+}
