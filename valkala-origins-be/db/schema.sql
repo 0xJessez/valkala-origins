@@ -2,6 +2,31 @@ CREATE DATABASE
 valkala_origins;
 \c valkala_origins
 
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY
+    ,username TEXT
+    ,password_digest TEXT
+);
+
+CREATE TABLE characters(
+    id SERIAL PRIMARY KEY
+    ,user_id INT
+    ,energy INT
+    ,level INT
+    ,exp INT
+    ,hp INT
+    ,mainhand TEXT
+    ,offhand TEXT
+    ,helm TEXT
+    ,mainhand_tier INT
+    ,offhand_tier INT
+    ,helm_tier INT
+);
+
+
+
+-- below to be reviewed
+
 CREATE TABLE reviews(
     id SERIAL PRIMARY KEY
     ,name TEXT
@@ -23,14 +48,6 @@ VALUES
     ('Jesse', 1111, 4, 'Great')
     ,('George', 2222, 2, 'Bad');
 
-CREATE TABLE users(
-    id SERIAL PRIMARY KEY
-    ,first_name TEXT
-    ,last_name TEXT
-    ,username TEXT
-    ,email TEXT
-    ,password_digest TEXT
-);
 
 ALTER TABLE users
 ADD CONSTRAINT unique_users

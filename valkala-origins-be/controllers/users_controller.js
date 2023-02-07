@@ -7,23 +7,23 @@ const User = require('../models/user')
 
 // routes
 router.post('/', (req, res) => {
-  const { first_name, last_name, username, email, password } = req.body
+  const { name, password } = req.body
 
   const passwordDigest = bcrypt.hashSync(password, bcrypt.genSaltSync(10), null)
 
   User
-    .create(first_name, last_name, username, email, passwordDigest)
+    .create(name, passwordDigest)
     .then(userName => res.json(userName))
 })
 
 router.get('/', (req, res) => {
-  const { first_name, last_name, username, email, password } = req.body
+  const { name, password } = req.body
 
   User
-    .findByEmail(email)
+    .findByUsername(name)
     .then(user => {
       if (user) {
-        res.json(user.email)
+        res.json(user.username)
       } else {
         res.json(null)
       }

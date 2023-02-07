@@ -5,7 +5,8 @@
 
 body {
   margin: 0 1rem;
-  max-width: 1200px;
+  max-width: 1440px;
+  max-height: 1024px;
   font-family: 'Judson', serif;
 }
 
@@ -36,7 +37,7 @@ body {
 }
 
 .landing {
-  height: 600px;
+  // height: 600px;
 
   .emblem {
     margin-top: 3rem;

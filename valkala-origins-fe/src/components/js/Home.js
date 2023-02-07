@@ -1,10 +1,7 @@
-import { useState } from "react"
-import { Routes, Route, Link } from 'react-router-dom'
-import Signup from './Signup'
-import Login from './Login'
+import { Link } from 'react-router-dom'
 import '../css/Home.scss'
 
-function Home() {
+export default function Home() {
 
   return (
     <div className="Home">
@@ -16,11 +13,9 @@ function Home() {
           <h1>VALKALA ORIGINS</h1>
         </div>
         <div className="play">
-          <a href="">PLAY NOW</a>
+          <Link to="/town">PLAY NOW</Link>
         </div>
       </main>
     </div>
   )
 }
-
-export default Home
