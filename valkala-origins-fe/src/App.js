@@ -5,6 +5,7 @@ import Home from './components/js/Home'
 import Signup from './components/js/Signup';
 import Login from './components/js/Login';
 import Town from './components/js/Town';
+import Summoning from './components/js/Summoning';
 
 export default function App() {
   // State for sessions
@@ -49,6 +50,7 @@ export default function App() {
           />}
         />
         <Route path='/town' element={<Town />} />
+        <Route path='/town/summoning' element={<Summoning />} />
       </Routes>
     </div>
   );

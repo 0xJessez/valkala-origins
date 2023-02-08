@@ -1,3 +1,7 @@
+// ===========================================================================
+// TOWN
+// ===========================================================================
+
 .town-area {
   background-image: url('../images/town.png');
   height: 948px;
@@ -5,7 +9,7 @@
 }
 
 .hotspot {
-  position: absolute;
+  position: relative;
   width: 2%;
   height: 2%;
   cursor: pointer;
@@ -31,4 +35,43 @@
 #barracks {
   top: 50%;
   left: 60%;
+}
+
+#summoning-ground {
+  top: 30%;
+  left: 60%;
+}
+
+#dungeons {
+  top: 50%;
+  left: 30%;
+}
+
+#blacksmith {
+  top: 30%;
+  left: 30%;
+}
+
+// ===========================================================================
+// SUMMONING
+// ===========================================================================
+
+.summoning-area {
+  background-image: url('../images/town.png');
+  height: 948px;
+  background-size: cover;
+}
+
+.scroll-container {
+  background-color: aliceblue;
+  margin-top: 200px;
+  margin-left: 100px;
+  margin-right: 100px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.scroll {
+  font-size: 2rem;
+  background-color: antiquewhite;
 }
