@@ -50,7 +50,7 @@ export default function App() {
           />}
         />
         <Route path='/town' element={<Town />} />
-        <Route path='/town/summoning' element={<Summoning />} />
+        <Route path='/town/summoning' element={<Summoning loggedInUserName={loggedInUserName} />} />
       </Routes>
     </div>
   );

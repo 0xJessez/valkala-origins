@@ -1,23 +1,115 @@
 // ===========================================================================
 // TOWN
 // ===========================================================================
+.Town,
+.Summoning {
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100;
+  }
+}
 
 .town-area {
-  background-image: url('../images/town.png');
+  background-image: url('../images/town2.png');
   height: 948px;
+  min-width: 1440px;
   background-size: cover;
-}
-
-.hotspot {
   position: relative;
-  width: 2%;
-  height: 2%;
-  cursor: pointer;
-  display: block;
-  white-space: nowrap;
+
+  .hotspot {
+    position: absolute;
+    width: 2%;
+    height: 2%;
+    cursor: pointer;
+    display: block;
+    white-space: nowrap;
+
+    a {
+      text-decoration: none;
+      color: #ffff61;
+    }
+  }
+
+  .hotspot.hide {
+    -webkit-animation: fade-out 1s forwards;
+    animation: fade-out 1s forwards;
+  }
+
+  .hotspot:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-animation: map-location-pulse 2s infinite;
+    animation: map-location-pulse 2s infinite;
+    content: " ";
+    width: 8px;
+    height: 8px;
+    background-color: #f2ff42;
+    border-radius: 50%;
+    box-shadow: 0 0 5px 2px #f2ff42;
+  }
+
+  @-webkit-keyframes map-location-pulse {
+    0% {
+      -webkit-transform: scale(.1);
+      transform: scale(.1);
+      box-shadow: 0 0 30px 15px #f2ff42, 0 0 50px 30px #f2ff42, 0 0 70px 45px #f2ff42
+    }
+
+    50% {
+      -webkit-transform: scale(.2);
+      transform: scale(.2);
+      box-shadow: 0 0 30px 15px #f2ff42, 0 0 50px 30px #f2ff42, 0 0 70px 45px #f2ff42
+    }
+
+    to {
+      -webkit-transform: scale(.1);
+      transform: scale(.1);
+      box-shadow: 0 0 30px 15px #f2ff42, 0 0 50px 30px #f2ff42, 0 0 70px 45px #f2ff42
+    }
+  }
+
+  @keyframes map-location-pulse {
+    0% {
+      -webkit-transform: scale(.1);
+      transform: scale(.1);
+      box-shadow: 0 0 30px 15px #f2ff42, 0 0 50px 30px #f2ff42, 0 0 70px 45px #f2ff42
+    }
+
+    50% {
+      -webkit-transform: scale(.2);
+      transform: scale(.2);
+      box-shadow: 0 0 30px 15px #f2ff42, 0 0 50px 30px #f2ff42, 0 0 70px 45px #f2ff42
+    }
+
+    to {
+      -webkit-transform: scale(.1);
+      transform: scale(.1);
+      box-shadow: 0 0 30px 15px #f2ff42, 0 0 50px 30px #f2ff42, 0 0 70px 45px #f2ff42
+    }
+  }
 }
 
-.location-text {
+.location-text,
+.location-soon {
   width: 200px;
   text-align: center;
   font-family: alagard;
@@ -28,28 +120,33 @@
 }
 
 .location-text {
-  top: -30px;
+  top: -40px;
   font-size: 1rem;
 }
 
+.location-soon {
+  top: -20px;
+  font-size: 0.7rem;
+}
+
 #barracks {
-  top: 50%;
-  left: 60%;
+  top: 42%;
+  left: 16.5%;
 }
 
 #summoning-ground {
-  top: 30%;
-  left: 60%;
+  top: 27.5%;
+  left: 40.5%;
 }
 
 #dungeons {
-  top: 50%;
-  left: 30%;
+  top: 37%;
+  left: 61.5%;
 }
 
 #blacksmith {
-  top: 30%;
-  left: 30%;
+  top: 83%;
+  left: 35.3%;
 }
 
 // ===========================================================================
@@ -57,21 +154,38 @@
 // ===========================================================================
 
 .summoning-area {
-  background-image: url('../images/town.png');
+  background-image: url('../images/town2blur.png');
   height: 948px;
   background-size: cover;
+
+  .summon-heading {
+    margin-top: 3rem;
+    font-size: 2rem;
+  }
 }
 
 .scroll-container {
-  background-color: aliceblue;
-  margin-top: 200px;
+  background-color: rgb(141, 141, 141);
+  margin-top: 100px;
   margin-left: 100px;
   margin-right: 100px;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  box-shadow: 10px 10px 0 rgb(0 0 0 / 75%);
+
+  .scroll {
+    font-size: 1.5rem;
+    background-color: antiquewhite;
+    margin: 15px;
+  }
 }
 
-.scroll {
-  font-size: 2rem;
-  background-color: antiquewhite;
+.town-return {
+  position: relative;
+  bottom: -10%;
+
+
+  a {
+    background-color: beige;
+  }
 }

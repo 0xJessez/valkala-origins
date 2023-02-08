@@ -1,52 +1,70 @@
+import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { orcImages } from '../../orcImages'
+import { summonOptions } from '../../orcOptions'
 import '../css/Town.scss'
 
-export default function Summoning() {
+export default function Summoning({ loggedInUserName }) {
   // State to check if character
+  const [orcSummoned, setOrcSummoned] = useState(false)
 
+  // State to store orc to summon
+  const [orcToSummon, setOrcToSummon] = useState(null)
 
-  const summonOptions = [
-    {
-      mainhand: 'stone dagger',
-      offhand: 'strong staff',
-      helm: 'steel helmet',
-      mainhandTier: 0,
-      offhandTier: 1,
-      helmTier: 2,
-    },
-    {
-      mainhand: 'iron sword',
-      offhand: 'rusty dagger',
-      helm: 'wood headress',
-      mainhandTier: 2,
-      offhandTier: 1,
-      helmTier: 1,
-    },
-    {
-      mainhand: 'strong hammer',
-      offhand: 'steel dagger',
-      helm: 'wooden helm',
-      mainhandTier: 1,
-      offhandTier: 2,
-      helmTier: 0,
+  const createOrc = () => {
+    if (orcToSummon !== null) {
+      fetch('/api/orcs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orcToSummon })
+      })
     }
-  ]
+  }
 
-  const checkCharExists = () => {
+  useEffect(createOrc, [orcToSummon])
 
+  useEffect(() => {
+    const checkOrcExists = () => {
+      // console.log('test')
+
+      fetch('/api/orcs/check', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ loggedInUserName })
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res) {
+            setOrcSummoned(true)
+          }
+        })
+    };
+    checkOrcExists();
+  }, []);
+
+  const selectOrc = option => {
+    setOrcToSummon(option)
   }
 
   return (
     <div className="Summoning">
       <div className="summoning-area">
-        <div className="summon-heading"><h3>SUMMON A CHAMPION</h3></div>
+        <div className="summon-heading">SUMMON AN ORC CHAMPION</div>
+        <div className="message">
+          {/* {orcSummoned && <div>Orc already summoned, return to town</div>} */}
+        </div>
         <div className="scroll-container">
           {summonOptions.map((option, index) =>
-            <div className="scroll" key={index}>
+            <div className="scroll" key={index} onClick={() => selectOrc(option)}>
               <p>{option.mainhand + " + " + option.mainhandTier}</p>
               <p>{option.offhand + " + " + option.offhandTier}</p>
               <p>{option.helm + " + " + option.helmTier}</p>
+              <img src={orcImages[option.orc]} alt="" />
             </div>
           )}
+        </div>
+        <div className="town-return">
+          <Link to='/town'>return to town</Link>
         </div>
       </div>
     </div>

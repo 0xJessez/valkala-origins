@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  border: 1px solid red;
+  // border: 1px solid red;
 }
 
 body {
@@ -55,5 +55,23 @@ body {
     color: #44FF57;
     font-size: 3rem;
     padding: 0.5rem;
+  }
+}
+
+.Signup,
+.Login {
+  animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  height: 948px;
+  background-color: aqua;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100;
   }
 }
