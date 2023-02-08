@@ -3,3 +3,32 @@
   height: 948px;
   background-size: cover;
 }
+
+.hotspot {
+  position: absolute;
+  width: 2%;
+  height: 2%;
+  cursor: pointer;
+  display: block;
+  white-space: nowrap;
+}
+
+.location-text {
+  width: 200px;
+  text-align: center;
+  font-family: alagard;
+  color: #ffff61;
+  position: absolute;
+  left: -75px;
+  text-shadow: 1px 1px 0 #c74c4c, -1px -1px 0 #8a1e1e, 1px -1px 0 #8a1e1e, -1px 1px 0 #8a1e1e, 1px 1px 0 #8a1e1e;
+}
+
+.location-text {
+  top: -30px;
+  font-size: 1rem;
+}
+
+#barracks {
+  top: 50%;
+  left: 60%;
+}
