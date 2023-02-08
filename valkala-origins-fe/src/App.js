@@ -6,9 +6,9 @@ import Signup from './components/js/Signup';
 import Login from './components/js/Login';
 import Town from './components/js/Town';
 
-function App() {
+export default function App() {
   // State for sessions
-  const [nameloggedInUserName, setLoggedInUserName] = useState(null);
+  const [loggedInUserName, setLoggedInUserName] = useState(null);
 
   const checkUser = () => {
     fetch('/api/sessions')
@@ -40,15 +40,16 @@ function App() {
       </header>
 
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home loggedInUserName={loggedInUserName} />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={
+          <Login
+            loggedInUserName={loggedInUserName}
+            setLoggedInUserName={setLoggedInUserName}
+          />}
+        />
         <Route path='/town' element={<Town />} />
       </Routes>
-
-      {/* <Home /> */}
     </div>
   );
 }
-
-export default App;

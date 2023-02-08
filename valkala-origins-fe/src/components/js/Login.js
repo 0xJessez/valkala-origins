@@ -1,7 +1,7 @@
 import { useState } from "react"
 import '../css/Home.scss'
 
-export default function Login() {
+export default function Login({ loggedInUserName, setLoggedInUserName }) {
   // States for registration
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -31,8 +31,6 @@ export default function Login() {
     if (name === '' || password === '') {
       setError(true);
     } else {
-      // setSubmitted(true);
-      // setError(false);
       fetch('/api/sessions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -45,6 +43,8 @@ export default function Login() {
           } else {
             setSubmitted(true);
             setError(false);
+            setLoggedInUserName(name)
+            console.log(loggedInUserName)
           }
         })
     }
