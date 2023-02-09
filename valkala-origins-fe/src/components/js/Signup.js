@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from 'react-router-dom'
 import '../css/Home.scss'
 
 export default function Signup() {
@@ -49,7 +50,7 @@ export default function Signup() {
         style={{
           display: submitted ? '' : 'none',
         }}>
-        <h1>User {name} successfully registered!!</h1>
+        <h4>User {name} successfully registered!</h4>
       </div>
     );
   };
@@ -62,7 +63,7 @@ export default function Signup() {
         style={{
           display: error ? '' : 'none',
         }}>
-        <h1>Please enter all the fields</h1>
+        <h4>Please enter all the fields</h4>
       </div>
     );
   };
@@ -70,27 +71,35 @@ export default function Signup() {
 
   return (
     <div className="Signup">
-      <div>
+      <div className="signup-head">
         <h1>Create an account</h1>
       </div>
 
-      {/* Calling to the methods */}
-      <div className="messages">
-        {errorMessage()}
-        {successMessage()}
-      </div>
+      <div className="signup-out-container">
+        <div className="signup-in-container">
+          <div className="messages">
+            {errorMessage()}
+            {successMessage()}
+          </div>
 
-      <form action="">
-        <div className="signup-center">
-          <label htmlFor="">Username</label>
-          <input type="text" onChange={handleName} value={name} />
-          <br />
-          <label htmlFor="">Password</label>
-          <input type="password" onChange={handlePassword} value={password} />
+          <form action="">
+            <div className="signup-center">
+              <label htmlFor="">Username</label>
+              <input type="text" onChange={handleName} value={name} />
+              <br />
+              <label htmlFor="">Password</label>
+              <input type="password" onChange={handlePassword} value={password} />
+            </div>
+
+            <div className="signupbtn">
+              <button onClick={handleSubmit} type='submit'>Sign up</button>
+            </div>
+          </form>
+          <div className="loginbtn">
+            <Link to='login'>Log in</Link>
+          </div>
         </div>
-
-        <button onClick={handleSubmit} type='submit'>Sign up</button>
-      </form>
+      </div>
     </div>
   )
 }

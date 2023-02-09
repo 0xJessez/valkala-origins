@@ -1,7 +1,8 @@
 import { useState } from "react"
+import { Link } from 'react-router-dom'
 import '../css/Home.scss'
 
-export default function Login({ loggedInUserName, setLoggedInUserName }) {
+export default function Login({ setLoggedInUserName, loggedInUserId, setLoggedInUserId }) {
   // States for registration
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -31,6 +32,8 @@ export default function Login({ loggedInUserName, setLoggedInUserName }) {
     if (name === '' || password === '') {
       setError(true);
     } else {
+      console.log('test log in')
+
       fetch('/api/sessions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -43,8 +46,9 @@ export default function Login({ loggedInUserName, setLoggedInUserName }) {
           } else {
             setSubmitted(true);
             setError(false);
-            setLoggedInUserName(name)
-            console.log(loggedInUserName)
+            setLoggedInUserName(res.username)
+            setLoggedInUserId(res.id)
+            // console.log(loggedInUserName)
           }
         })
     }
@@ -79,7 +83,7 @@ export default function Login({ loggedInUserName, setLoggedInUserName }) {
 
   return (
     <div className="Login">
-      <div>
+      <div className="login-head">
         <h1>Log in</h1>
       </div>
 
@@ -89,17 +93,35 @@ export default function Login({ loggedInUserName, setLoggedInUserName }) {
         {successMessage()}
       </div>
 
-      <form action="">
-        <div className="login-center">
-          <label htmlFor="">Username</label>
-          <input type="text" onChange={handleName} value={name} />
-          <br />
-          <label htmlFor="">Password</label>
-          <input type="password" onChange={handlePassword} value={password} />
+      {loggedInUserId ?
+        <div className="play">
+          <Link to="/town">PLAY NOW</Link>
         </div>
+        :
+        <div className="login-out-container">
+          <div className="login-in-container">
+            <div className="messages">
+              {errorMessage()}
+              {successMessage()}
+            </div>
 
-        <button onClick={handleSubmit} type='submit'>Log in</button>
-      </form>
+            <form action="">
+              <div className="login-center">
+                <label htmlFor="">Username</label>
+                <input type="text" onChange={handleName} value={name} />
+                <br />
+                <label htmlFor="">Password</label>
+                <input type="password" onChange={handlePassword} value={password} />
+              </div>
+
+              <div className="loginbtn">
+                <button onClick={handleSubmit} type='submit'>Log in</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      }
+
     </div>
   )
 }

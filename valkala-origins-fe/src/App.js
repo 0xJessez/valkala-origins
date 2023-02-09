@@ -14,18 +14,51 @@ import Blacksmith from './components/js/Blacksmith';
 export default function App() {
   // State for sessions
   const [loggedInUserName, setLoggedInUserName] = useState(null);
+  const [loggedInUserId, setLoggedInUserId] = useState(null)
+
+  // State to check if Orc has been summoned
+  const [orcSummoned, setOrcSummoned] = useState(null)
 
   const checkUser = () => {
+    console.log('test')
     fetch('/api/sessions')
       .then(res => res.json())
-      .then(userName => {
-        if (userName) {
-          setLoggedInUserName(userName)
+      .then(user => {
+        if (user) {
+          setLoggedInUserName(user.username)
+          setLoggedInUserId(user.id)
         }
       })
   }
 
-  useEffect(checkUser, [])
+  const checkOrcExists = () => {
+    console.log('orc?')
+    fetch('/api/orcs/check', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ loggedInUserId })
+    })
+      .then(res => res.json())
+      .then(orc => {
+        if (orc) {
+          setOrcSummoned(orc)
+        }
+      })
+  }
+
+  useEffect(checkUser, []);
+  useEffect(checkOrcExists, [loggedInUserId]);
+
+  // const signOut = () => {
+  //   fetch('/api/sessions', {
+  //     method: 'DELETE'
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       setLoggedInUserId(res)
+  //       setLoggedInUserName(res)
+  //     })
+  // }
 
   return (
     <div className="App">
@@ -36,6 +69,7 @@ export default function App() {
         <div className="right-head">
           <nav>
             <ul>
+              {/* add conditional log out button */}
               <li><Link to="/leaderboard">Leaderboard</Link></li>
               <li><Link to="/signup">Sign up</Link></li>
               <li><Link to="/login">Log in</Link></li>
@@ -50,13 +84,32 @@ export default function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={
           <Login
-            loggedInUserName={loggedInUserName}
             setLoggedInUserName={setLoggedInUserName}
+            loggedInUserId={loggedInUserId}
+            setLoggedInUserId={setLoggedInUserId}
           />}
         />
-        <Route path='/town' element={<Town />} />
-        <Route path='/town/summoning' element={<Summoning loggedInUserName={loggedInUserName} />} />
-        <Route path='/town/barracks' element={<Barracks />} />
+
+        {/* To be cleaned up using nesting */}
+        <Route path='/town' element=
+          {<Town
+            orcSummoned={orcSummoned}
+          />}
+        />
+        <Route path='/town/summoning' element={
+          <Summoning
+            loggedInUserId={loggedInUserId}
+            orcSummoned={orcSummoned}
+            setOrcSummoned={setOrcSummoned}
+          />}
+        />
+        <Route path='/town/barracks' element=
+          {<Barracks
+            loggedInUserId={loggedInUserId}
+            orcSummoned={orcSummoned}
+            setOrcSummoned={setOrcSummoned}
+          />}
+        />
         <Route path='/town/dungeons' element={<Dungeons />} />
         <Route path='/town/blacksmith' element={<Blacksmith />} />
       </Routes>

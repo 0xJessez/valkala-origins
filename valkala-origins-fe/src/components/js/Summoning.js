@@ -4,10 +4,7 @@ import { orcImages } from '../../orcImages'
 import { summonOptions } from '../../orcOptions'
 import '../css/Town.scss'
 
-export default function Summoning({ loggedInUserName }) {
-  // State to check if character
-  const [orcSummoned, setOrcSummoned] = useState(false)
-
+export default function Summoning({ loggedInUserId, orcSummoned, setOrcSummoned }) {
   // State to store orc to summon
   const [orcToSummon, setOrcToSummon] = useState(null)
 
@@ -18,29 +15,29 @@ export default function Summoning({ loggedInUserName }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ orcToSummon })
       })
+        .then(() => checkOrcExists())
     }
   }
 
   useEffect(createOrc, [orcToSummon])
 
-  useEffect(() => {
-    const checkOrcExists = () => {
-      // console.log('test')
+  const checkOrcExists = () => {
+    console.log('test check orc')
 
-      fetch('/api/orcs/check', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ loggedInUserName })
+    fetch('/api/orcs/check', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ loggedInUserId })
+    })
+      .then(res => res.json())
+      .then(orc => {
+        if (orc) {
+          setOrcSummoned(orc)
+        }
       })
-        .then(res => res.json())
-        .then(res => {
-          if (res) {
-            setOrcSummoned(true)
-          }
-        })
-    };
-    checkOrcExists();
-  }, []);
+  }
+
+  useEffect(checkOrcExists, []);
 
   const selectOrc = option => {
     setOrcToSummon(option)

@@ -6,9 +6,6 @@ export default function Home({ loggedInUserName }) {
   return (
     <div className="Home">
       <main className="landing">
-        <div className="emblem">
-          TBC
-        </div>
         <div className="main-heading">
           <h1>VALKALA ORIGINS</h1>
         </div>

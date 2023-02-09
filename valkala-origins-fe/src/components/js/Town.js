@@ -2,14 +2,13 @@ import { Link } from 'react-router-dom'
 import '../css/Town.scss'
 import energy from '../images/energy.svg'
 
-export default function Town() {
-
+export default function Town({ orcSummoned }) {
   return (
     <div className="Town">
       <div className="town-area">
         <div className="energy-gauge">
           <img src={energy} alt="" />
-          <div className="energy-num">100</div>
+          <div className="energy-num">{orcSummoned ? orcSummoned.energy : '---'}</div>
         </div>
         <Link to='/town/barracks' className="hotspot" id='barracks'>
           <span className="location-text">BARRACKS</span>

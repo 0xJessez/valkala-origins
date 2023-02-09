@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  border: 1px solid red;
+  // border: 1px solid red;
 }
 
 body {
@@ -17,6 +17,11 @@ body {
   background-color: black;
   color: white;
 
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
   .left-head {
     margin-left: 1rem;
   }
@@ -26,13 +31,7 @@ body {
       display: flex;
       list-style: none;
       gap: 1rem;
-      // text-decoration: none;
-      // color: white;
-
-      li {
-
-        Link {}
-      }
+      margin-top: 23px;
     }
   }
 }
@@ -40,30 +39,48 @@ body {
 .landing {
   height: 948px;
   background-color: #6e736f;
-
-  .emblem {
-    margin-top: 3rem;
-  }
+  padding-top: 1.5rem;
 
   .main-heading {
     margin-bottom: 30px;
-  }
-
-  .play a {
-    background-color: #123F17;
-    text-decoration: none;
-    color: #44FF57;
-    font-size: 3rem;
-    padding: 0.5rem;
+    font-size: 2rem;
+    text-shadow: 2px 2px 0 rgb(0 0 0 / 75%);
   }
 }
+
+// ===========================================================================
+// HOME
+// ===========================================================================
+
+.play a {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #123F17;
+  text-decoration: none;
+  color: #36e147;
+  text-shadow: 3px 3px 0 rgb(0 0 0 / 75%);
+  font-size: 3rem;
+  padding: 0.5rem;
+  box-shadow: 4px 4px 0 rgb(0 0 0 / 75%);
+
+  transition: background-color .2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #24722d;
+  }
+}
+
+// ===========================================================================
+// SIGN UP / LOG IN
+// ===========================================================================
 
 .Signup,
 .Login {
   animation: fadeIn 1s;
-  -webkit-animation: fadeIn 1s;
   height: 948px;
-  background-color: aqua;
+  background-color: rgb(130, 136, 136);
 }
 
 @keyframes fadeIn {
@@ -73,5 +90,152 @@ body {
 
   100% {
     opacity: 100;
+  }
+}
+
+.signup-head {
+  padding-top: 1.5rem;
+}
+
+.signup-out-container {
+  width: 400px;
+  height: 500px;
+  margin: 0 auto;
+  background-color: #12243F;
+  box-shadow: 10px 10px 0 rgb(0 0 0 / 75%);
+
+  .signup-in-container {
+    width: 350px;
+    margin: 0 auto;
+
+    .messages {
+      height: 60px;
+      color: white;
+    }
+
+    .signup-center {
+      label {
+        display: block;
+        font-size: 1.3rem;
+        margin-top: 1rem;
+        color: white;
+      }
+
+      input {
+        line-height: 1.5rem;
+        width: 100%;
+      }
+    }
+
+    button {
+      background-color: #00B5C0;
+      text-decoration: none;
+      color: #ffffff;
+      text-shadow: 3px 3px 0 rgb(0 0 0 / 75%);
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      box-shadow: 4px 4px 0 rgb(0 0 0 / 75%);
+      width: 40%;
+
+      transition: background-color .2s ease;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #4ce3eb;
+      }
+    }
+
+    a {
+      background-color: #C05100;
+      display: block;
+      margin: 0 auto;
+      text-decoration: none;
+      color: #ffffff;
+      text-shadow: 3px 3px 0 rgb(0 0 0 / 75%);
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      box-shadow: 4px 4px 0 rgb(0 0 0 / 75%);
+      width: 40%;
+
+      transition: background-color .2s ease;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #da8447;
+      }
+    }
+
+
+    .signupbtn {
+      width: 350px;
+      margin-top: 30px;
+      padding: 30px 0 30px 0;
+    }
+
+    .loginbtn {
+      width: 350px;
+      padding: 40px 0 30px 0;
+      border-top: 1px dotted white;
+    }
+  }
+}
+
+.login-head {
+  padding-top: 1.5rem;
+}
+
+.login-out-container {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+  background-color: #12243F;
+  box-shadow: 10px 10px 0 rgb(0 0 0 / 75%);
+
+  .login-in-container {
+    width: 350px;
+    margin: 0 auto;
+
+    .messages {
+      height: 60px;
+      color: white;
+    }
+
+    .login-center {
+      label {
+        display: block;
+        font-size: 1.3rem;
+        margin-top: 1rem;
+        color: white;
+      }
+
+      input {
+        line-height: 1.5rem;
+        width: 100%;
+      }
+    }
+
+    button {
+      background-color: #C05100;
+      text-decoration: none;
+      color: #ffffff;
+      text-shadow: 3px 3px 0 rgb(0 0 0 / 75%);
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      box-shadow: 4px 4px 0 rgb(0 0 0 / 75%);
+      width: 40%;
+
+      transition: background-color .2s ease;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #da8447;
+      }
+    }
+
+    .loginbtn {
+      width: 350px;
+      margin-top: 30px;
+      padding: 30px 0 30px 0;
+    }
   }
 }

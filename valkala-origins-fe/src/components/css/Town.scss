@@ -2,19 +2,9 @@
 // TOWN
 // ===========================================================================
 .Town,
-.Summoning {
+.Summoning,
+.Barracks {
   animation: fadeIn 1s;
-  -webkit-animation: fadeIn 1s;
-}
-
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0
-  }
-
-  to {
-    opacity: 1
-  }
 }
 
 @keyframes fadeIn {
@@ -82,7 +72,6 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-animation: map-location-pulse 2s infinite;
     animation: map-location-pulse 2s infinite;
     content: " ";
     width: 8px;
@@ -90,26 +79,6 @@
     background-color: #f2ff42;
     border-radius: 50%;
     box-shadow: 0 0 5px 2px #f2ff42;
-  }
-
-  @-webkit-keyframes map-location-pulse {
-    0% {
-      -webkit-transform: scale(.1);
-      transform: scale(.1);
-      box-shadow: 0 0 30px 15px #f2ff42, 0 0 50px 30px #f2ff42, 0 0 70px 45px #f2ff42
-    }
-
-    50% {
-      -webkit-transform: scale(.2);
-      transform: scale(.2);
-      box-shadow: 0 0 30px 15px #f2ff42, 0 0 50px 30px #f2ff42, 0 0 70px 45px #f2ff42
-    }
-
-    to {
-      -webkit-transform: scale(.1);
-      transform: scale(.1);
-      box-shadow: 0 0 30px 15px #f2ff42, 0 0 50px 30px #f2ff42, 0 0 70px 45px #f2ff42
-    }
   }
 
   @keyframes map-location-pulse {
@@ -174,6 +143,28 @@
   left: 35.3%;
 }
 
+.town-return {
+  position: relative;
+  bottom: -10%;
+
+  a {
+    background-color: #c11933;
+    text-decoration: none;
+    color: #ffffff;
+    text-shadow: 2px 2px 0 rgb(0 0 0 / 75%);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    box-shadow: 3px 3px 0 rgb(0 0 0 / 75%);
+    transition: background-color .2s ease, color .2s ease;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #bd6270;
+      color: #360202;
+    }
+  }
+}
+
 // ===========================================================================
 // SUMMONING
 // ===========================================================================
@@ -217,12 +208,69 @@
   }
 }
 
-.town-return {
-  position: relative;
-  bottom: -10%;
+// ===========================================================================
+// BARRACKS
+// ===========================================================================
 
+.Barracks {
+  background-image: url('../images/town2blur.png');
+  height: 948px;
+  background-size: cover;
 
-  a {
-    background-color: beige;
+  .barracks-heading {
+    margin-top: 3rem;
+    font-size: 2rem;
   }
+
+  .orc-container {
+    background-color: rgb(141, 141, 141);
+    margin-top: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    box-shadow: 10px 10px 0 rgb(0 0 0 / 75%);
+
+    .energy-container {
+      img {
+        height: 130px;
+        width: 130px;
+      }
+
+      button {
+        background-color: #123F17;
+        text-decoration: none;
+        color: #36e147;
+        text-shadow: 2px 2px 0 rgb(0 0 0 / 75%);
+        font-size: 1.5rem;
+        padding: 0.5rem;
+        box-shadow: 3px 3px 0 rgb(0 0 0 / 75%);
+        transition: background-color .2s ease, transform .2s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #24722d;
+        }
+      }
+    }
+  }
+}
+
+// ===========================================================================
+// UNDER CONSTRUCTION
+// ===========================================================================
+
+.Blacksmith,
+.Dungeons {
+  background-image: url('../images/town2blur.png');
+  height: 948px;
+  background-size: cover;
+}
+
+.under-construction-container {
+  background-color: rgb(141, 141, 141);
+  margin-top: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+  box-shadow: 10px 10px 0 rgb(0 0 0 / 75%);
 }
