@@ -1,23 +1,23 @@
 # Valkala Origins
 
-My final GA Project!
+Currently under construction, but in future - play Valkala Origins a simple battle sim based on Etherorcs (cc0).
 
-- [Link to Project](#)
+- [Link to Project](https://valkala0test.fly.dev/)
 
 ##  :pushpin: ABOUT
 
-Valkala Origins is a full stack application which aims to play through a simple rpg game where you can, summon, battle and level an orc.
+Valkala Origins is a full stack application which aims to take you through the life cycle of a modern day Orc.
 
-Art is cc0 and derived from the NFT collection Etherorcs.
+Summon -> Battle -> Rest -> Craft Gear (and get stronger) -> Repeat -> Profit?
 
 ## :rocket: Technology
 
-We used the following technologies and frameworks:
+The following technologies and frameworks were used:
 
 - React
-- Express
+- Express (dotenv, bcrypt, nodemon)
+- JavaScript (vanilla plus the above)
 - HTML
-- JavaScript
 - CSS / SASS
 - Figma
 - VSCode
