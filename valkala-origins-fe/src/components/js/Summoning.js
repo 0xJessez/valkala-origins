@@ -50,11 +50,8 @@ export default function Summoning({ loggedInUserName }) {
     <div className="Summoning">
       <div className="summoning-area">
         <div className="summon-heading">SUMMON AN ORC CHAMPION</div>
-        <div className="message">
-          {/* {orcSummoned && <div>Orc already summoned, return to town</div>} */}
-        </div>
-        <div className="scroll-container">
-          {summonOptions.map((option, index) =>
+        <div className={orcSummoned ? 'scroll-container2' : 'scroll-container'}>
+          {orcSummoned ? <div className="summon-message">Orc already summoned, return to town</div> : summonOptions.map((option, index) =>
             <div className="scroll" key={index} onClick={() => selectOrc(option)}>
               <p>{option.mainhand + " + " + option.mainhandTier}</p>
               <p>{option.offhand + " + " + option.offhandTier}</p>

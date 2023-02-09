@@ -11,7 +11,7 @@ export default function Town() {
           <span className="location-soon">(UNDER CONSTRUCTION)</span>
         </a>
         <Link to='/town/summoning' className="hotspot" id='summoning-ground'>
-          <span className="location-text"><Link to='/town/summoning'>SUMMONING GROUND</Link></span>
+          <span className="location-text">SUMMONING GROUND</span>
         </Link>
         <a href="#" className="hotspot" id='dungeons'>
           <span className="location-text">DUNGEONS</span>

@@ -180,6 +180,18 @@
   }
 }
 
+.scroll-container2 {
+  background-color: rgb(141, 141, 141);
+  margin-top: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+  box-shadow: 10px 10px 0 rgb(0 0 0 / 75%);
+
+  .summon-message {
+    font-size: 3rem;
+  }
+}
+
 .town-return {
   position: relative;
   bottom: -10%;
